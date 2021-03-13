@@ -4,7 +4,7 @@ import ProductCard from "./components/ProductCard";
 import CreateProduct from "./components/CreateProduct";
 
 
-function App() {
+function Products() {
   const [products, setProducts] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
   const [createMode, setCreateMode] = useState(false)
@@ -66,4 +66,4 @@ function App() {
   );
 }
 
-export default App;
+export default Products;
