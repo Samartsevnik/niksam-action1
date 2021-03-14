@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import React, {useState} from 'react'
 import WarningText from "./WarningText";
 
 const CreateProduct = ({createModeHandler, products, setProducts}) => {
@@ -51,4 +51,4 @@ const CreateProduct = ({createModeHandler, products, setProducts}) => {
   );
 }
 
-export default CreateProduct;
+export default React.memo(CreateProduct);
