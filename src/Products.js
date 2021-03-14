@@ -19,7 +19,7 @@ function Products() {
     setTotalPrice(products.reduce((acc,rec) => {return acc + (rec.price * rec.count)},0))
   }, [products])
 
-  function addProduct(product, count) {
+  const addProduct = useCallback((product, count) => {
     if(isNaN(count) || count < 0 ) count = 0
     let newProductsList = products.map((el) => {
       if (el.id === product.id) {
@@ -29,25 +29,25 @@ function Products() {
     })
     localStorage.setItem('products', JSON.stringify(newProductsList))
     setProducts(newProductsList)
-  }
+  },[products])
 
   const createModeHandler = useCallback((isCreateMode) => {
     setCreateMode(isCreateMode)
   }, [])
 
-  function deleteProduct (product) {
+  const deleteProduct = useCallback((product) => {
     let newProductsList = products.filter((el) => el.id !== product.id)
     localStorage.setItem('products', JSON.stringify(newProductsList))
     setProducts(newProductsList)
-  }
+  }, [products])
 
-  function editProduct (product) {
+  const editProduct = useCallback((product) => {
     if ((product.price && product.price >= 0) && product.name.length) {
       let newProductsList = products.map((el) => el.id === product.id ? product : el )
       localStorage.setItem('products', JSON.stringify(newProductsList))
       setProducts(newProductsList)
     }
-  }
+  }, [products])
 
   return (
     <div className="product">

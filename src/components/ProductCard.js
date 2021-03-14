@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import React, {useState} from 'react'
 import trash from '../assets/images/trash.png'
 import edit from '../assets/images/edit.png'
 
@@ -7,7 +7,6 @@ const ProductCard = ({product, addProduct, deleteProduct, editProduct}) => {
   const [editMode, setEditMode] = useState(false)
   const [name, setName] = useState(product.name)
   const [price, setPrice] = useState(product.price)
-
   return (
     <div className="product-card">
       <button type="button" className="product-card__button edit"
@@ -41,4 +40,4 @@ const ProductCard = ({product, addProduct, deleteProduct, editProduct}) => {
   );
 }
 
-export default ProductCard;
+export default React.memo(ProductCard);
