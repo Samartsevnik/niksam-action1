@@ -3,19 +3,19 @@ import WarningText from "./WarningText";
 
 const CreateProduct = ({createModeHandler, products, setProducts}) => {
   const [name, setName] = useState('')
-  const [price, setPrice] = useState()
+  const [price, setPrice] = useState('')
   const [isValidPrice, setIsValidPrice] = useState(true)
   const [isValidName, setIsValidName] = useState(true)
 
   function createProduct(name, price) {
-    if ((!isNaN(price) && price > -1) && name.length) {
+    if ((price && price >= 0) && name.length) {
       const id = products[products.length - 1] ? products[products.length - 1].id + 1 : 0
       let newProductsList = [...products, {id, name, price, count: 0}]
       localStorage.setItem('products', JSON.stringify(newProductsList))
       setProducts(newProductsList)
       createModeHandler(false)
     }
-    setIsValidPrice((!isNaN(price) && price > -1))
+    setIsValidPrice((price && price >= 0))
     setIsValidName(!!name.length)
   }
 
